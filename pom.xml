@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.intelligents-ia</groupId>
+		<artifactId>intelligents-ia</artifactId>
+		<version>1.4.1</version>
+	</parent>
+	<groupId>org.intelligentsia.utility</groupId>
+	<artifactId>jpa</artifactId>
+	<packaging>jar</packaging>
+	<version>1.6-SNAPSHOT</version>
+	<name>jpa-utility</name>
+	<url>https://github.com/geronimo-iia/jpa-utilities</url>
+	<description>
+        Utilitaire autour de JPA.
+        see http://intelligents-ia.com/index.php/post/2012/02/15/How-to-%3A-JPA%2C-Hibernate-Co-En-version
+    </description>
+	<developers>
+		<developer>
+			<id>jerome.guibert.intelligents.ia.com</id>
+			<name>Jerome Guibert</name>
+			<organization>Intelligents-ia</organization>
+			<email>jguibert@intelligents-ia.com</email>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:git:https://github.com/geronimo-iia/jpa-utilities.git</connection>
+		<url>https://github.com/geronimo-iia/jpa-utilities.git</url>
+	</scm>
+	<inceptionYear>2011</inceptionYear>
+	<organization>
+		<name>Intelligents-ia</name>
+		<url>http://intelligents-ia.com</url>
+	</organization>
+	<dependencies>
+		<!-- ******************************************************************* -->
+		<!-- SPRINGFRAMEWORK -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- ******************************************************************* -->
+		<!-- HIBERNATE -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.1.7.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>4.1.7.Final</version>
+		</dependency>
+		<!-- ******************************************************************* -->
+		<!-- COMMON DBCP -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- ******************************************************************* -->
+		<!-- CGLIB -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<!-- ******************************************************************* -->
+		<!-- TESTING JUNIT FRAMEWORK -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- ******************************************************************* -->
+		<!-- TESTING H2 FRAMEWORK -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.153</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- ******************************************************************* -->
+		<!-- TESTING LOGGER FRAMEWORK -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.6</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- ******************************************************************* -->
+		<!-- TESTING SPRING FRAMEWORK -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<!-- ******************************************************************* -->
+	<!-- PROPERTIES -->
+	<!-- ******************************************************************* -->
+	<properties>
+		<spring.version>3.1.3.RELEASE</spring.version>
+		<!-- Header path -->
+		<header.path>${basedir}/header.txt</header.path>
+	</properties>
+	<!-- ******************************************************************* -->
+	<!-- REPOSITORY MANAGMENT -->
+	<!-- ******************************************************************* -->
+	<repositories>
+		<repository>
+			<id>intelligents-ia-releases</id>
+			<name>Intelligents-ia releases repository</name>
+			<url>http://mvn.intelligents-ia.com/releases</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+</project>
