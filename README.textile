@@ -1,0 +1,62 @@
+h1. JPA Utilities
+
+What we can found in this project ?
+a generic DAO,
+an instantiation of JPA/Hibernate/Springframework with transaction management,
+a model configuration configuration du model based on annotations
+a sample use case
+
+"Read more...":http://intelligents-ia.com/index.php/post/2012/02/15/How-to-%3A-JPA%2C-Hibernate-Co-En-version
+
+This project came from more or less good idea, when you must use JPA...   
+
+
+h2. Configure your pom
+
+h3. dependency
+
+bc. 
+<dependency>
+	<groupId>org.intelligentsia.utility</groupId>
+	<artifactId>jpa</artifactId>
+	<version>1.6</version>
+</dependency>
+
+h3. add repository
+
+
+bc. 
+<repositories>
+	<repository>
+		<id>intelligents-ia-releases</id>
+		<name>Intelligents-ia releases repository</name>
+		<url>http://mvn.intelligents-ia.com/releases</url>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>false</enabled>
+		</snapshots>
+	</repository>
+</repositories>
+
+
+
+h2. Release Notes
+ 
+
+h3. 1.6-SNAPSHOT
+
+In progress:
+* prepare release 1.6
+* add spring template 
+
+Done:
+* Update to JKD 1.6
+* Update Spring framework version 3.1.3
+* Update Hibernate 4.1.7
+* Use Ehcache as Second cache level
+* Import from google code 
+
+
+
