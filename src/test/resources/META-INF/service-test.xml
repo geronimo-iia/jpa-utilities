@@ -1,67 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:property-placeholder location="classpath:META-INF/model.properties" />
+	<context:property-placeholder location="classpath:META-INF/model.properties" />
 
-    <context:annotation-config />
+	<context:annotation-config />
 
-    <context:component-scan base-package="org.intelligentsia.utility.jpa" />
+	<context:component-scan base-package="org.intelligentsia.utility" />
 
-    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	<bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 
 
-    <!-- ENTITY MANAGER -->
-    <bean id="modelEntityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceUnitName" value="my-model" />
-        <property name="persistenceXmlLocation" value="classpath:META-INF/my-persistence.xml" />
-        <property name="dataSource" ref="model-dataSource" />
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="databasePlatform" value="${model.hibernate.dialect}" />
-                <property name="showSql" value="${model.hibernate.showsql}" />
-            </bean>
-        </property>
-        <property name="jpaPropertyMap">
-            <map>
-                <entry key="hibernate.dialect" value="${model.hibernate.dialect}" />
-                <entry key="hibernate.hbm2ddl.auto" value="${model.hibernate.hbm2ddl.auto}" />
-                <entry key="hibernate.format_sql" value="${model.hibernate.format_sql}" />
-                <entry key="hibernate.cache.use_second_level_cache" value="${model.hibernate.cache.use_second_level_cache}" />
-               	<entry key="hibernate.cache.region.factory_class" value="${model.hibernate.cache.region.factory_class}" />
-                <entry key="hibernate.cache.provider_class" value="${model.hibernate.cache.provider_class}" />
-                <entry key="hibernate.cache.use_query_cache" value="${model.hibernate.cache.use_query_cache}" />
-                <entry key="hibernate.cache.use_second_level_cache" value="${model.hibernate.cache.use_second_level_cache}" />
-                <entry key="hibernate.cache.use_structured_cache" value="${model.hibernate.cache.use_structured_cache}" />
-                <entry key="hibernate.ejb.naming_strategy" value="${model.hibernate.namingStrategy}" />
-            </map>
-        </property>
+	<!-- ENTITY MANAGER -->
+	<bean id="modelEntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="my-model" />
+		<property name="persistenceXmlLocation" value="classpath:META-INF/my-persistence.xml" />
+		<property name="dataSource" ref="model-dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="${model.hibernate.dialect}" />
+				<property name="showSql" value="${model.hibernate.showsql}" />
+			</bean>
+		</property>
+		<property name="jpaPropertyMap">
+			<map>
+				<entry key="hibernate.dialect" value="${model.hibernate.dialect}" />
+				<entry key="hibernate.hbm2ddl.auto" value="${model.hibernate.hbm2ddl.auto}" />
+				<entry key="hibernate.format_sql" value="${model.hibernate.format_sql}" />
+				<entry key="hibernate.cache.use_second_level_cache" value="${model.hibernate.cache.use_second_level_cache}" />
+				<entry key="hibernate.cache.region.factory_class" value="${model.hibernate.cache.region.factory_class}" />
+				<entry key="hibernate.cache.provider_class" value="${model.hibernate.cache.provider_class}" />
+				<entry key="hibernate.cache.use_query_cache" value="${model.hibernate.cache.use_query_cache}" />
+				<entry key="hibernate.cache.use_second_level_cache" value="${model.hibernate.cache.use_second_level_cache}" />
+				<entry key="hibernate.cache.use_structured_cache" value="${model.hibernate.cache.use_structured_cache}" />
+				<entry key="hibernate.ejb.naming_strategy" value="${model.hibernate.namingStrategy}" />
+			</map>
+		</property>
 
-    </bean>
+	</bean>
 
-    <!--  TRANSACTION MANAGEMENT  -->
-    <bean id="modelTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="modelEntityManagerFactory" />
-    </bean>
+	<!-- TRANSACTION MANAGEMENT -->
+	<bean id="modelTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="modelEntityManagerFactory" />
+	</bean>
 
-    <tx:annotation-driven transaction-manager="modelTransactionManager" />
+	<tx:annotation-driven transaction-manager="modelTransactionManager" />
 
-    <!-- DAO DECLARATION -->
-     <bean id="pageDao" class="org.intelligentsia.utility.jpa.GenericJpaDao">
-        <constructor-arg value="org.intelligentsia.utility.jpa.model.Page" />
-    </bean>
-    <bean id="tagDao" class="org.intelligentsia.utility.jpa.GenericJpaDao">
-        <constructor-arg value="org.intelligentsia.utility.jpa.model.Tag" />
-    </bean>
-
-    <bean id="model-dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-       <property name="driverClassName" value="org.h2.Driver" />
-	    <property name="url" value="jdbc:h2:~/test" />
-    </bean>
+	<!-- DAO DECLARATION -->
+	<bean id="pageDao" class="org.intelligentsia.utility.jpa.GenericJpaDao">
+		<constructor-arg value="org.intelligentsia.utility.jpa.model.Page" />
+	</bean>
+	<bean id="tagDao" class="org.intelligentsia.utility.jpa.GenericJpaDao">
+		<constructor-arg value="org.intelligentsia.utility.jpa.model.Tag" />
+	</bean>
+	<bean id="commonIdDao" class="org.intelligentsia.utility.jpa.GenericJpaDao">
+		<constructor-arg value="org.intelligentsia.utility.jpa.model.CommonIdIdentifier" />
+	</bean>
+	<bean id="model-dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:~/test" />
+	</bean>
 
 </beans>

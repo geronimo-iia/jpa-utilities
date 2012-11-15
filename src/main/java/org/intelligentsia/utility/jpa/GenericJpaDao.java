@@ -254,6 +254,6 @@ public class GenericJpaDao<T extends Serializable, ID extends Serializable> {
 
 	@Override
 	public String toString() {
-		return "GenericJpaDao [ persistentClass=" + (persistentClass != null ? persistentClass.getName() : "null") + "]";
+		return getClass().getSimpleName() + " [ persistentClass=" + (persistentClass != null ? persistentClass.getName() : "null") + "]";
 	}
 }

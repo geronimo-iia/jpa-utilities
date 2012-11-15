@@ -7,6 +7,7 @@
     <class>org.intelligentsia.utility.jpa.model.Page</class>
     <class>org.intelligentsia.utility.jpa.model.Site</class>
     <class>org.intelligentsia.utility.jpa.model.Tag</class>
+    <class>org.intelligentsia.utility.jpa.model.CommonIdIdentifier</class>
     <exclude-unlisted-classes/>
   </persistence-unit>
 </persistence>

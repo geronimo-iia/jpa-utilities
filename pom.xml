@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.intelligents-ia</groupId>
 		<artifactId>intelligents-ia</artifactId>
-		<version>1.4.1</version>
+		<version>1.4.2-SNAPSHOT</version>
 	</parent>
 	<groupId>org.intelligentsia.utility</groupId>
 	<artifactId>jpa</artifactId>
@@ -40,6 +40,27 @@
 		<url>http://intelligents-ia.com</url>
 	</organization>
 	<dependencies>
+		<!-- ******************************************************************* -->
+		<!-- GUAVA FRAMEWORK -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>13.0.1</version>
+		</dependency>
+		<!-- ******************************************************************* -->
+		<!-- JACKSON -->
+		<!-- ******************************************************************* -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.0.6</version>
+		</dependency>
 		<!-- ******************************************************************* -->
 		<!-- SPRINGFRAMEWORK -->
 		<!-- ******************************************************************* -->
@@ -93,7 +114,7 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.3.153</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<!-- ******************************************************************* -->
 		<!-- TESTING LOGGER FRAMEWORK -->
@@ -144,4 +165,42 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											pl.project13.maven
+										</groupId>
+										<artifactId>
+											git-commit-id-plugin
+										</artifactId>
+										<versionRange>
+											[2.1.0,)
+										</versionRange>
+										<goals>
+											<goal>revision</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>

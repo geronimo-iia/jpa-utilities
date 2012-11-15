@@ -1,6 +1,6 @@
 h1. JPA Utilities
 
-What we can found in this project ?
+What we can found in this 'old' project ?
 a generic DAO,
 an instantiation of JPA/Hibernate/Springframework with transaction management,
 a model configuration configuration du model based on annotations
@@ -50,6 +50,7 @@ h3. 1.6-SNAPSHOT
 In progress:
 * prepare release 1.6
 * add spring template 
+
 
 Done:
 * Update to JKD 1.6
