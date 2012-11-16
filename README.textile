@@ -45,12 +45,7 @@ bc.
 h2. Release Notes
  
 
-h3. 1.6-SNAPSHOT
-
-In progress:
-* prepare release 1.6
-* add spring template 
-
+h3. 1.6
 
 Done:
 * Update to JKD 1.6
@@ -58,6 +53,5 @@ Done:
 * Update Hibernate 4.1.7
 * Use Ehcache as Second cache level
 * Import from google code 
-
 
 
